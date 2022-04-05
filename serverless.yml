@@ -1,0 +1,36 @@
+service: serverless-webpack
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  profile: serverlessUser
+
+plugins:
+  - serverless-s3-sync
+  - serverless-webpack
+  
+package:
+  individually: true
+
+custom:
+  s3Sync:
+    - bucketName: srkicadeploymentbucket-23
+      localDir: UploadData
+
+functions:
+  getUser:
+    handler: lambdas/getUser.handler
+    events:
+      - http:
+          path: get-user/{ID}
+          method: GET
+          cors: true
+
+resources:
+  Resources:
+    SrkiBucketUpload:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: srkicadeploymentbucket-23
