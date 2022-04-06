@@ -5,7 +5,7 @@ exports.handler = async event => {
 
     if (!event.pathParameters || !event.pathParameters.ID) {
         // failed without an ID
-        return Responses._400({ message: 'missing the ID from the path' });
+        return Responses._400({ message: 'missing the ID from the path path' });
     }
 
     let ID = event.pathParameters.ID;
