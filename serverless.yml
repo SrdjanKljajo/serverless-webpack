@@ -16,7 +16,7 @@ package:
 
 custom:
   s3Sync:
-    - bucketName: srkicadeploymentbucket-23
+    - bucketName: srkicadeploymentbucket-2323
       localDir: UploadData
 
 functions:
@@ -33,4 +33,4 @@ resources:
     SrkiBucketUpload:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: srkicadeploymentbucket-23
+        BucketName: srkicadeploymentbucket-2323
