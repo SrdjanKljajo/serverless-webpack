@@ -33,7 +33,7 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: serverless deploy --aws-profile
+    - name: serverless deploy
       uses: serverless/github-action@master
       with:
         args: deploy
@@ -42,3 +42,4 @@ jobs:
         # or if using AWS creds directly
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_PROFILE: serverlessUser
