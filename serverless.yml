@@ -16,8 +16,11 @@ package:
 
 custom:
   webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
+    webpackConfig: 'webpack.config.js'
+    includeModules: false
+    packager: 'yarn' # Packager that will be used to package your external modules
+    excludeFiles: src/**/*.test.js # Provide a glob for files to ignore
+    
   s3Sync:
     - bucketName: srkicadeploymentbucket-2323
       localDir: UploadData
