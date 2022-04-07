@@ -1,16 +1,17 @@
 
-const webpack = require('webpack')
-const slsw = require('serverless-webpack');
-
-module.exports = (async () => {
-  const accountId = await slsw.lib.serverless.providers.aws.getAccountId();
-  return {
+module.exports = {
     entry: './graphql.js',
-    target: 'node',
-    plugins: [
-      new webpack.DefinePlugin({
-        AWS_ACCOUNT_ID: `${accountId}`,
-      }),
-    ],
+    target: "node",
+    mode: 'none',
+    optimization: {
+      minimize: true
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/
+        }
+      ]
+    },
   };
-})();
