@@ -7,9 +7,6 @@ module.exports = {
     optimization: {
       minimize: true
     },
-    performance: {
-      hints: true
-    },
     module: {
       rules: [
         {
