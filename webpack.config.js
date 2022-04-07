@@ -5,10 +5,10 @@ module.exports = {
     target: "node",
     mode: 'none',
     optimization: {
-      minimize: false
+      minimize: true
     },
     performance: {
-      hints: false
+      hints: true
     },
     module: {
       rules: [
