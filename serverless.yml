@@ -9,6 +9,7 @@ provider:
 
 plugins:
   - serverless-s3-sync
+  - serverless-offline
   - serverless-webpack
 
 package:
@@ -16,11 +17,11 @@ package:
 
 custom:
   webpack:
-    webpackConfig: 'webpack.config.js'
+    webpackConfig: "webpack.config.js"
     includeModules: false
-    packager: 'yarn' # Packager that will be used to package your external modules
+    packager: "yarn" # Packager that will be used to package your external modules
     excludeFiles: src/**/*.test.js # Provide a glob for files to ignore
-    
+
   s3Sync:
     - bucketName: srkicadeploymentbucket-2323
       localDir: UploadData
@@ -35,9 +36,16 @@ functions:
           method: post
           cors: true
       - http:
-          path: graphql
+         path: graphql
+         method: get
+         cors: true
+
+  playground:
+    handler: graphql.graphqlHandler
+    events:
+      - http:
+          path: playground
           method: get
-          cors: true
 
 resources:
   Resources:
